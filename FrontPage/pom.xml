@@ -1,0 +1,196 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.application</groupId>
+  <artifactId>FrontPage</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  
+  
+  <parent>
+  	<groupId>org.springframework.boot</groupId>
+  	<artifactId>spring-boot-starter-parent</artifactId>
+  	<version>2.0.8.RELEASE</version>
+  	<relativePath/>
+  </parent>
+  
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<java.version>1.8</java.version>
+		<spring-cloud.version>Finchley.SR2</spring-cloud.version>
+	</properties>
+	
+
+  
+
+	
+	<!-- Spring Cloud dependencies -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+  
+ <!--  <repositories>
+		<repository>
+			<id>spring-milestone</id>
+			<url>https://repo.spring.io/libs-milestone</url>
+		</repository>
+	</repositories> -->
+	<repositories>
+        
+        <repository>
+			<id>spring-milestone</id>
+			<url>https://repo.spring.io/libs-milestone</url>
+		</repository>
+    </repositories>
+  
+  
+  <dependencies>
+  		<dependency>
+	  		<groupId>org.springframework.boot</groupId>
+	  		<artifactId>spring-boot-starter</artifactId>
+  		</dependency>
+  		
+  	    <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        
+         <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.21</version>
+        </dependency>
+        
+        <!-- 公共实体类 -->
+  		<dependency>
+        	 <groupId>com.application</groupId>
+  			<artifactId>CommonBlogEntity</artifactId>
+  			<version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-tomcat</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+	
+		<!-- 添加对jsp的支持 -->
+		<dependency>
+		    <groupId>org.apache.tomcat.embed</groupId>
+		    <artifactId>tomcat-embed-jasper</artifactId>
+		   <!--  此处的<scope></scope>一定不要加上作用于为provided，可以为compile或缺省 -->
+		</dependency>
+        
+        <!-- json依赖 -->
+       <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.7</version>
+        </dependency>
+       
+            
+        <!-- 添加eureka的依赖 -->    
+         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka-server</artifactId>
+            <version>1.4.4.RELEASE</version>
+        </dependency>
+     
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.4.RELEASE</version>
+        </dependency>
+            
+            
+         <!-- 添加feign的依赖 -->
+      
+		 <!-- 添加feign的依赖 -->
+      
+    	<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+            <version>1.4.0.RELEASE</version>
+        </dependency>
+		
+
+	<!-- 热部署依赖 -->
+		<dependency>			
+			<groupId>org.springframework.boot</groupId>			
+			<artifactId>spring-boot-devtools</artifactId>			
+			<scope>true</scope>			
+			<optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+		</dependency>
+
+       <!-- redis和session的依赖，加上上面的 -->
+     <!--   <dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+	      <groupId>org.springframework.boot</groupId>
+	      <artifactId>spring-boot-starter-redis</artifactId>
+	      <version>1.4.7.RELEASE</version>
+	    </dependency>
+	 
+	  	<dependency>
+	      <groupId>org.springframework.session</groupId>
+	      <artifactId>spring-session-data-redis</artifactId>
+	      <version>1.0.0.RC1</version>
+	      <type>pom</type>
+	    </dependency> -->
+       
+       
+       <!--security依赖  -->
+        <!--  <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+         -->
+  
+  
+  </dependencies>
+  
+  
+   <build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+			<!-- 这个是使用一个maven的插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.9</source>
+					<target>1.9</target>
+				</configuration>
+			</plugin>
+			<plugin>				
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>					
+					<fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
+				</configuration>	
+			</plugin>
+
+					
+		</plugins>
+	</build>
+</project>
