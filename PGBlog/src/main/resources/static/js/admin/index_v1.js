@@ -209,11 +209,11 @@ var initBlogCountByStatus = function() {
 					var draftPercent = Math.round(data[2] / 2 * 100) / 1.00 + '%<i class="fa fa-bolt"></i>';
 					$(".draftPercent").html(draftPercent);
 				
-					$(".allBlog").html(data[0]);
+					$(".allBlog").html(data[1]);
 					var allBlogPercent = Math.round(data[0] / allCount * 100) / 1.00 + '%<i class="fa fa-bolt"></i>';
 					$(".allBlogPercent").html(allBlogPercent);
 				
-					$(".delete").html(data[1]);
+					$(".delete").html(data[0]);
 					var deletePercent = Math.round(data[1] / allCount * 100) / 1.00 + '%<i class="fa fa-bolt"></i>';
 					$(".deletePercent").html(deletePercent);
 			
